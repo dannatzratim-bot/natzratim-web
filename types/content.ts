@@ -1,12 +1,16 @@
 export type RoleSlug = "super_admin" | "admin";
 
+export type ContentHeadingLevel = 1 | 2 | 3 | 4;
+
+export type HeadingBlock = {
+  id: string;
+  type: "heading";
+  level: ContentHeadingLevel;
+  text: string;
+};
+
 export type ContentBlock =
-  | {
-      id: string;
-      type: "heading";
-      level: 1 | 2 | 3 | 4;
-      text: string;
-    }
+  | HeadingBlock
   | {
       id: string;
       type: "paragraph";

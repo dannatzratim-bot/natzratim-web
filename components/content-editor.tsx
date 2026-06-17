@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { ContentBlock } from "@/types/content";
+import type { ContentBlock, ContentHeadingLevel } from "@/types/content";
 
 type ContentEditorProps = {
   name: string;
@@ -125,7 +125,7 @@ function EditorBlock({
         <div className="grid gap-3 md:grid-cols-[120px_1fr]">
           <select
             value={block.level}
-            onChange={(event) => onChange({ ...block, level: Number(event.target.value) as ContentBlock["level"] })}
+            onChange={(event) => onChange({ ...block, level: Number(event.target.value) as ContentHeadingLevel })}
             className="rounded-2xl border border-parchment-200 bg-parchment-50 px-4 py-3 text-sm"
           >
             <option value={1}>H1</option>
