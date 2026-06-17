@@ -15,7 +15,7 @@ export function ContentRenderer({ blocks }: ContentRendererProps) {
     <div className="space-y-6">
       {blocks.map((block) => {
         if (block.type === "heading") {
-          const Tag = `h${block.level}` as keyof JSX.IntrinsicElements;
+          const Tag = `h${block.level}` as "h1" | "h2" | "h3" | "h4";
           return (
             <Tag key={block.id} className={cn("font-display font-bold text-temple-900", block.level === 1 && "text-3xl", block.level === 2 && "text-2xl", block.level === 3 && "text-xl", block.level === 4 && "text-lg")}>
               {block.text}
