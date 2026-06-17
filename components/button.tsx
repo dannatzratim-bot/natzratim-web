@@ -23,14 +23,14 @@ export function Button({
 export function LinkButton({
   className,
   variant = "primary",
+  href,
   ...props
-}: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement> & { variant?: "primary" | "secondary" | "ghost" }>) {
+}: PropsWithChildren<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & { href: string; variant?: "primary" | "secondary" | "ghost" }>) {
   const styles =
     variant === "secondary"
       ? "border border-parchment-300 bg-white text-temple-900 hover:border-parchment-400 hover:bg-parchment-50"
       : variant === "ghost"
         ? "text-temple-900 hover:bg-parchment-100"
         : "bg-temple-900 text-white shadow-shrine hover:bg-temple-800";
-  return <Link className={cn(base, styles, className)} {...props} />;
+  return <Link href={href} className={cn(base, styles, className)} {...props} />;
 }
-
