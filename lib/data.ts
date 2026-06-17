@@ -211,7 +211,7 @@ export async function listArticles(options: { search?: string; categorySlug?: st
   }
 
   const client = publicClient();
-  let query = client!.from("articles").select("*, category:article_categories(*), author:users(full_name, username)").order("published_at", { ascending: false, nullsLast: true });
+  let query = client!.from("articles").select("*, category:article_categories(*), author:users(full_name, username)").order("published_at", { ascending: false });
   if (!includeDrafts) query = query.eq("published", true);
   if (search) query = query.or(`title.ilike.%${search}%,excerpt.ilike.%${search}%`);
   if (categorySlug) {
@@ -257,7 +257,7 @@ export async function listVideos(options: { search?: string; categorySlug?: stri
   }
 
   const client = publicClient();
-  let query = client!.from("videos").select("*, category:video_categories(*)").order("published_at", { ascending: false, nullsLast: true });
+  let query = client!.from("videos").select("*, category:video_categories(*)").order("published_at", { ascending: false });
   if (!includeDrafts) query = query.eq("published", true);
   if (search) query = query.or(`title.ilike.%${search}%,excerpt.ilike.%${search}%`);
   if (categorySlug) {
